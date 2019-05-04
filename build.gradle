@@ -157,7 +157,7 @@ def cucumberSpringVersion = '1.2.5'
 def springFrameworkVersion = '5.1.6.RELEASE'
 def aspectJVersion = '1.9.3'
 def springRetryVersion = '1.2.4.RELEASE'
-def cgLibVersion = '3.2.11'
+def cgLibVersion = '3.2.12'
 
 configurations.all {
 	resolutionStrategy {
