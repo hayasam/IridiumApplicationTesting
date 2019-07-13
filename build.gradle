@@ -133,7 +133,7 @@ sourceSets {
 
 def mysqlDriverVersion = '8.0.16'
 def guavaVersion = '27.1-jre'
-def seleniumVersion = '4.0.0-alpha-1'
+def seleniumVersion = '4.0.0-alpha-2'
 def htmlUnitDriverVersion = '2.35.1'
 def validationVersion = '2.0.1.Final'
 def cucumberVersion = '1.2.5'
