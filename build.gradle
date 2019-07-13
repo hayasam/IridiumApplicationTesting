@@ -154,7 +154,7 @@ def compressCommonsVersion = '1.18.0.redhat-00001'
 def xmlApisVersion = '1.4.01'
 def sysoutOverSLF4JVersion = '1.0.2'
 def cucumberSpringVersion = '1.2.5'
-def springFrameworkVersion = '5.1.7.RELEASE'
+def springFrameworkVersion = '5.1.8.RELEASE'
 def aspectJVersion = '1.9.4'
 def springRetryVersion = '1.2.4.RELEASE'
 def cgLibVersion = '3.2.12'
@@ -203,14 +203,12 @@ dependencies {
 	compile 'org.zaproxy:zap-clientapi:' + zapAPIVersion
 	compile files("lib/zap-2.7.0.jar", "lib/cucumber-core-1.2.5-AG-SNAPSHOT.jar")
 	compile 'net.lightbody.bmp:browsermob-core:' + browsermobVersion
-	//compile 'com.matthewcasperson:browsermob-core:' + browsermobVersion
-	// use a snapshot build to work around guava incompatibilities until 2.1.5 is officially released
 	compile files('lib/something_local.jar')
 	compile group: 'org.apache.commons', name: 'commons-compress', version: compressCommonsVersion
 	compile group: 'xml-apis', name: 'xml-apis', version: xmlApisVersion
 	compile group: 'uk.org.lidalia', name: 'sysout-over-slf4j', version: sysoutOverSLF4JVersion
 	compile group: 'org.springframework.retry', name: 'spring-retry', version: springRetryVersion
-	compile group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.8'
+	compile group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.9'
 	compile group: 'org.json', name: 'json', version: '20180813'
 	compile group: 'cglib', name: 'cglib', version: cgLibVersion
 	compile group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.2.0'
@@ -226,9 +224,9 @@ dependencies {
 	compile group: 'org.owasp.jbrofuzz', name: 'jbrofuzz', version: '2.5.1'
 	compile group: 'org.owasp.jbrofuzz', name: 'jbrofuzz-encoder', version: '2.5.1'
 	compile group: 'org.apache.ant', name: 'ant', version: '1.10.6'
-	compile group: 'org.bouncycastle', name: 'bcmail-jdk15on', version: '1.61'
-	compile group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.61'
-	compile group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.61'
+	compile group: 'org.bouncycastle', name: 'bcmail-jdk15on', version: '1.62'
+	compile group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.62'
+	compile group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.62'
 	compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
 	compile group: 'commons-codec', name: 'commons-codec', version: '1.12'
 	compile group: 'commons-collections', name: 'commons-collections', version: '3.2.2'
@@ -242,7 +240,7 @@ dependencies {
 	compile group: 'net.sf.ezmorph', name: 'ezmorph', version: '1.0.6'
 	compile group: 'edu.umass.cs.benchlab', name: 'harlib', version: '1.1.2'
 	compile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.1'
-	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.8'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.9'
 	compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.11'
 	compile group: 'com.github.zafarkhaja', name: 'java-semver', version: '0.9.0'
 	compile group: 'org.jdom', name: 'jdom', version: '1.1.3'
