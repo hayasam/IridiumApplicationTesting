@@ -154,10 +154,10 @@ def compressCommonsVersion = '1.18.0.redhat-00001'
 def xmlApisVersion = '1.4.01'
 def sysoutOverSLF4JVersion = '1.0.2'
 def cucumberSpringVersion = '1.2.5'
-def springFrameworkVersion = '5.1.6.RELEASE'
-def aspectJVersion = '1.9.3'
+def springFrameworkVersion = '5.1.7.RELEASE'
+def aspectJVersion = '1.9.4'
 def springRetryVersion = '1.2.4.RELEASE'
-def cgLibVersion = '3.2.11'
+def cgLibVersion = '3.2.12'
 
 configurations.all {
 	resolutionStrategy {
@@ -225,7 +225,7 @@ dependencies {
 	compile group: 'edu.stanford.ejalbert', name: 'BrowserLauncher2', version: '1.3'
 	compile group: 'org.owasp.jbrofuzz', name: 'jbrofuzz', version: '2.5.1'
 	compile group: 'org.owasp.jbrofuzz', name: 'jbrofuzz-encoder', version: '2.5.1'
-	compile group: 'org.apache.ant', name: 'ant', version: '1.10.5'
+	compile group: 'org.apache.ant', name: 'ant', version: '1.10.6'
 	compile group: 'org.bouncycastle', name: 'bcmail-jdk15on', version: '1.61'
 	compile group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.61'
 	compile group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.61'
