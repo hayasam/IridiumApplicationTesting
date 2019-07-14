@@ -167,14 +167,14 @@ public class ZapProxyUtilsImpl implements LocalProxyUtils<ClientApi> {
 			 */
 			ZAP.main(args.toArray(new String[args.size()]));
 
-			final ClientApi clientApi = new ClientApi("localhost", freePort);
+			final ClientApi clientApi = new ClientApi("localhost", freePort, Constants.ZAP_API_KEY);
 			clientApi.waitForSuccessfulConnectionToZap(WAIT_FOR_START);
 
 			zapSingleton = new ProxyDetailsImpl<>(
 				freePort,
 				false,
 				PROXY_NAME,
-				new ClientApi("localhost", freePort));
+				new ClientApi("localhost", freePort, Constants.ZAP_API_KEY));
 
 			return zapSingleton;
 		}
