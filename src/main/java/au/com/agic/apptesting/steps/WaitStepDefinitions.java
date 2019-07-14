@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
 import java.util.regex.Pattern;
 
 /**
@@ -160,8 +161,8 @@ public class WaitStepDefinitions {
 		final By by = getBy.getBy(selector, StringUtils.isNotBlank(alias), selectorValue, State.getFeatureStateForThread());
 		final WebDriverWait wait = new WebDriverWait(
 			webDriver,
-			Integer.parseInt(waitDuration),
-			Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+			Duration.ofSeconds(Integer.parseInt(waitDuration)),
+			Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(by));
@@ -205,8 +206,8 @@ public class WaitStepDefinitions {
 		final By by = getBy.getBy(selector, StringUtils.isNotBlank(alias), selectorValue, State.getFeatureStateForThread());
 		final WebDriverWait wait = new WebDriverWait(
 			webDriver,
-			Integer.parseInt(waitDuration),
-			Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+			Duration.ofSeconds(Integer.parseInt(waitDuration)),
+			Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 
 		try {
 			final boolean result = wait.until(
@@ -326,8 +327,8 @@ public class WaitStepDefinitions {
 		final By by = getBy.getBy(selector, StringUtils.isNotBlank(alias), selectorValue, State.getFeatureStateForThread());
 		final WebDriverWait wait = new WebDriverWait(
 			webDriver,
-			Integer.parseInt(waitDuration),
-			Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+			Duration.ofSeconds(Integer.parseInt(waitDuration)),
+			Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(by));
@@ -449,8 +450,8 @@ public class WaitStepDefinitions {
 		final By by = getBy.getBy(selector, StringUtils.isNotBlank(alias), selectorValue, State.getFeatureStateForThread());
 		final WebDriverWait wait = new WebDriverWait(
 			webDriver,
-			Integer.parseInt(waitDuration),
-			Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+			Duration.ofSeconds(Integer.parseInt(waitDuration)),
+			Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 		try {
 			wait.until(ExpectedConditions.presenceOfElementLocated(by));
 		} catch (final TimeoutException ex) {
@@ -493,8 +494,8 @@ public class WaitStepDefinitions {
 		final By by = getBy.getBy(selector, StringUtils.isNotBlank(alias), selectorValue, State.getFeatureStateForThread());
 		final WebDriverWait wait = new WebDriverWait(
 			webDriver,
-			Integer.parseInt(waitDuration),
-			Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+			Duration.ofSeconds(Integer.parseInt(waitDuration)),
+			Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 		try {
 			final boolean result = wait.until(
 				ExpectedConditions.not(ExpectedConditions.presenceOfAllElementsLocatedBy(by)));
@@ -537,8 +538,8 @@ public class WaitStepDefinitions {
 				linkContent, StringUtils.isNotBlank(alias), State.getFeatureStateForThread());
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				Integer.parseInt(waitDuration),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(Integer.parseInt(waitDuration)),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText(content)));
 		} catch (final TimeoutException ex) {
 			/*
@@ -574,8 +575,8 @@ public class WaitStepDefinitions {
 				linkContent, StringUtils.isNotBlank(alias), State.getFeatureStateForThread());
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				Integer.parseInt(waitDuration),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(Integer.parseInt(waitDuration)),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			final boolean result = wait.until(
 				ExpectedConditions.not(
 					ExpectedConditions.presenceOfAllElementsLocatedBy(By.linkText(content))));
@@ -623,8 +624,8 @@ public class WaitStepDefinitions {
 			final WebDriver webDriver = State.getThreadDesiredCapabilityMap().getWebDriverForThread();
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				Integer.parseInt(waitDuration),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(Integer.parseInt(waitDuration)),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(
 				By.cssSelector("[" + attribute + "='" + attributeValue + "']")));
 		} catch (final TimeoutException ex) {
@@ -665,8 +666,8 @@ public class WaitStepDefinitions {
 			final WebDriver webDriver = State.getThreadDesiredCapabilityMap().getWebDriverForThread();
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				Integer.parseInt(waitDuration),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(Integer.parseInt(waitDuration)),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			final boolean result = wait.until(
 				ExpectedConditions.not(ExpectedConditions.visibilityOfAllElementsLocatedBy(
 					By.cssSelector("[" + attribute + "='" + attributeValue + "']"))));
@@ -713,8 +714,8 @@ public class WaitStepDefinitions {
 			final WebDriver webDriver = State.getThreadDesiredCapabilityMap().getWebDriverForThread();
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				Integer.parseInt(waitDuration),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(Integer.parseInt(waitDuration)),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			wait.until(ExpectedConditions.presenceOfElementLocated(
 				By.cssSelector("[" + attribute + "='" + attributeValue + "']")));
 		} catch (final TimeoutException ex) {
@@ -755,8 +756,8 @@ public class WaitStepDefinitions {
 			final WebDriver webDriver = State.getThreadDesiredCapabilityMap().getWebDriverForThread();
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				Integer.parseInt(waitDuration),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(Integer.parseInt(waitDuration)),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			final boolean result = wait.until(
 				ExpectedConditions.not(ExpectedConditions.presenceOfAllElementsLocatedBy(
 					By.cssSelector("[" + attribute + "='" + attributeValue + "']"))));

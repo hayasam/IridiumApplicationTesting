@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.validation.constraints.NotNull;
 import java.io.File;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -284,7 +285,10 @@ public class TestRunner {
 			}
 			final Optional<String> mergedReport = J_UNIT_REPORT_MERGE.mergeReports(reports);
 			if (mergedReport.isPresent()) {
-				FileUtils.write(new File(reportDirectory + Constants.MERGED_REPORT), mergedReport.get());
+				FileUtils.write(
+					new File(reportDirectory + Constants.MERGED_REPORT),
+					mergedReport.get(),
+					Charset.defaultCharset());
 			}
 		} catch (final Exception ex) {
 			LOGGER.error("WEBAPPTESTER-BUG-0002: Could not save merged report", ex);

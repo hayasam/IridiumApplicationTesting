@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.time.Duration;
 
 import static com.google.common.base.Preconditions.checkState;
 
@@ -264,8 +265,8 @@ public class ClickingStepDefinitions {
 				State.getFeatureStateForThread());
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				State.getFeatureStateForThread().getDefaultWait(),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			final WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
 
 			mouseMovementUtils.mouseGlide(
@@ -382,8 +383,8 @@ public class ClickingStepDefinitions {
 				State.getFeatureStateForThread());
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				State.getFeatureStateForThread().getDefaultWait(),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			final WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(by));
 
 			mouseMovementUtils.mouseGlide(
@@ -585,8 +586,8 @@ public class ClickingStepDefinitions {
 				final WebDriver webDriver = State.getThreadDesiredCapabilityMap().getWebDriverForThread();
 				final WebDriverWait wait = new WebDriverWait(
 					webDriver,
-					State.getFeatureStateForThread().getDefaultWait(),
-					Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+					Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+					Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 				final WebElement element = wait.until(
 					ExpectedConditions.elementToBeClickable(
 						By.cssSelector("[" + attr + "='" + random + "']")));
@@ -653,8 +654,8 @@ public class ClickingStepDefinitions {
 			for (int i = 0; i < fixedTimes; ++i) {
 				final WebDriverWait wait = new WebDriverWait(
 					webDriver,
-					State.getFeatureStateForThread().getDefaultWait(),
-					Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+					Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+					Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 				final WebElement element = wait.until(
 					ExpectedConditions.elementToBeClickable(
 						By.cssSelector("[" + attr + "='" + value + "']")));
@@ -854,8 +855,8 @@ public class ClickingStepDefinitions {
 			for (int i = 0; i < fixedTimes; ++i) {
 				final WebDriverWait wait = new WebDriverWait(
 					webDriver,
-					State.getFeatureStateForThread().getDefaultWait(),
-					Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+					Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+					Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 				final WebElement element = wait.until(
 					ExpectedConditions.presenceOfElementLocated(By.linkText(text)));
 

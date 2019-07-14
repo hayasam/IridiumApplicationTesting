@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
 import java.time.LocalDate;
 
 /**
@@ -45,8 +46,8 @@ public class AGStepDefinitions {
 		final By by = getBy.getBy("class", false, Constants.POSTCODE_CLASS, State.getFeatureStateForThread());
 		final WebDriverWait wait = new WebDriverWait(
 			webDriver,
-			State.getFeatureStateForThread().getDefaultWait(),
-			Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+			Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+			Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 
 		final WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
 		final JavascriptExecutor js = (JavascriptExecutor) webDriver;
@@ -93,8 +94,8 @@ public class AGStepDefinitions {
 
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				State.getFeatureStateForThread().getDefaultWait(),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 
 			final WebElement element = wait.until(
 				ExpectedConditions.elementToBeClickable(

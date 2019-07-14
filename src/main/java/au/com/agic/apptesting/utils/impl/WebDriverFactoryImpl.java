@@ -14,8 +14,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
@@ -23,6 +25,7 @@ import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -127,7 +130,7 @@ public class WebDriverFactoryImpl implements WebDriverFactory {
 		}
 
 		if (Constants.SAFARI.equalsIgnoreCase(browser)) {
-			return Try.of(() -> new SafariDriver(capabilities))
+			return Try.of(() -> new SafariDriver(new SafariOptions(capabilities)))
 				.onFailure(ex -> exitWithError(browser, ex))
 				.getOrElseThrow(ex -> new RuntimeException(ex));
 		}
@@ -155,13 +158,13 @@ public class WebDriverFactoryImpl implements WebDriverFactory {
 					Driver info: driver.version: InternetExplorerDriver
 				 */
 				.andThenTry(caps -> caps.setCapability("acceptInsecureCerts", false))
-				.mapTry(caps -> new InternetExplorerDriver(capabilities))
+				.mapTry(caps -> new InternetExplorerDriver(new InternetExplorerOptions(capabilities)))
 				.onFailure(ex -> exitWithError(browser, ex))
 				.getOrElseThrow(ex -> new RuntimeException(ex));
 		}
 
 		if (Constants.EDGE.equalsIgnoreCase(browser)) {
-			return Try.of(() -> new EdgeDriver(capabilities))
+			return Try.of(() -> new EdgeDriver(new EdgeOptions().merge(capabilities)))
 				.onFailure(ex -> exitWithError(browser, ex))
 				.getOrElseThrow(ex -> new RuntimeException(ex));
 		}
@@ -259,7 +262,7 @@ public class WebDriverFactoryImpl implements WebDriverFactory {
 
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
-		return Try.of(() -> new ChromeDriver(capabilities))
+		return Try.of(() -> new ChromeDriver(new ChromeOptions().merge(capabilities)))
 			.onFailure(ex -> exitWithError(browser, ex))
 			.getOrElseThrow(ex -> new RuntimeException(ex));
 	}

@@ -17,6 +17,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
+
 /**
  * Gherkin steps for simulating custom HTML events.
  *
@@ -103,8 +105,8 @@ public class CustomEventStepDefinitions {
 			final By by = getBy.getBy(selector, StringUtils.isNotBlank(alias), selectorValue, State.getFeatureStateForThread());
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				State.getFeatureStateForThread().getDefaultWait(),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			final WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(by));
 			final JavascriptExecutor js = (JavascriptExecutor) webDriver;
 

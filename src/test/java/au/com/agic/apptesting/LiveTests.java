@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -696,7 +697,7 @@ public class LiveTests {
 	private int findHighestTag(final String file, final String tagPrefix) {
 		try {
 			final int maxTags = 1000;
-			final String contents = IOUtils.toString(this.getClass().getResource(file));
+			final String contents = IOUtils.toString(this.getClass().getResource(file), Charset.defaultCharset());
 			for (int count = 1; count < maxTags; ++count) {
 				if (!contents.contains(tagPrefix + count)) {
 					return count - 1;

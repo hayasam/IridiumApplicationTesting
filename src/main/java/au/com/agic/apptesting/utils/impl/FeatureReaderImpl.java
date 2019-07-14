@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import javax.validation.constraints.NotNull;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.regex.Matcher;
 
@@ -34,7 +35,7 @@ public class FeatureReaderImpl implements FeatureReader {
 		boolean matchesFeatureGroup = false;
 
 		try {
-			final List<String> lines = FileUtils.readLines(file);
+			final List<String> lines = FileUtils.readLines(file, Charset.defaultCharset());
 
 			for (final String line : lines) {
 				if (Constants.COMMENT_LINE.matcher(line).find()) {

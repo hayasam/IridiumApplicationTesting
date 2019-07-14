@@ -16,6 +16,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
+
 import static com.google.common.base.Preconditions.checkState;
 
 /**
@@ -132,8 +134,8 @@ public class DropDownStepDefinitions {
 			final WebDriver webDriver = State.getThreadDesiredCapabilityMap().getWebDriverForThread();
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				State.getFeatureStateForThread().getDefaultWait(),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			final WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
 
 			mouseMovementUtils.mouseGlide(
@@ -241,8 +243,8 @@ public class DropDownStepDefinitions {
 			final WebDriver webDriver = State.getThreadDesiredCapabilityMap().getWebDriverForThread();
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				State.getFeatureStateForThread().getDefaultWait(),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			final WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
 
 			mouseMovementUtils.mouseGlide(

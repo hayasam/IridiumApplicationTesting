@@ -17,6 +17,7 @@ import org.springframework.retry.support.RetryTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
+import java.time.Duration;
 import java.util.Optional;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -188,8 +189,8 @@ public class BrowserInteropUtilsImpl implements BrowserInteropUtils {
 			 */
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				State.getFeatureStateForThread().getDefaultWait(),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			return wait.until(
 				ExpectedConditions.presenceOfElementLocated(By.linkText(text)));
 		}
@@ -284,8 +285,8 @@ public class BrowserInteropUtilsImpl implements BrowserInteropUtils {
 		} else {
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				waitDuration,
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(waitDuration),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			wait.until(ExpectedConditions.alertIsPresent());
 		}
 	}
@@ -309,8 +310,8 @@ public class BrowserInteropUtilsImpl implements BrowserInteropUtils {
 		} else {
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				State.getFeatureStateForThread().getDefaultWait(),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 
 			wait.until(ExpectedConditions.alertIsPresent());
 
@@ -338,8 +339,8 @@ public class BrowserInteropUtilsImpl implements BrowserInteropUtils {
 		} else {
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				State.getFeatureStateForThread().getDefaultWait(),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 
 			wait.until(ExpectedConditions.alertIsPresent());
 

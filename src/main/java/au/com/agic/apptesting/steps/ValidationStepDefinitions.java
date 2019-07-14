@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -133,8 +134,8 @@ public class ValidationStepDefinitions {
 			final WebDriver webDriver = State.getThreadDesiredCapabilityMap().getWebDriverForThread();
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				State.getFeatureStateForThread().getDefaultWait(),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(State.getFeatureStateForThread().getDefaultWait()),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			final WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
 
 			final String className = autoAliasUtils.getValue(
@@ -595,8 +596,8 @@ public class ValidationStepDefinitions {
 		final By by = getBy.getBy(selector, StringUtils.isNotBlank(alias), selectorValue, State.getFeatureStateForThread());
 		final WebDriverWait wait = new WebDriverWait(
 			webDriver,
-			NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait()),
-			Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+			Duration.ofSeconds(NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait())),
+			Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(by));
@@ -638,8 +639,8 @@ public class ValidationStepDefinitions {
 		final By by = getBy.getBy(selector, StringUtils.isNotBlank(alias), selectorValue, State.getFeatureStateForThread());
 		final WebDriverWait wait = new WebDriverWait(
 			webDriver,
-			NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait()),
-			Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+			Duration.ofSeconds(NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait())),
+			Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 
 		try {
 			final boolean result = wait.until(
@@ -723,8 +724,8 @@ public class ValidationStepDefinitions {
 		final By by = getBy.getBy(selector, StringUtils.isNotBlank(alias), selectorValue, State.getFeatureStateForThread());
 		final WebDriverWait wait = new WebDriverWait(
 			webDriver,
-			NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait()),
-			Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+			Duration.ofSeconds(NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait())),
+			Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(by));
@@ -842,8 +843,8 @@ public class ValidationStepDefinitions {
 		final By by = getBy.getBy(selector, StringUtils.isNotBlank(alias), selectorValue, State.getFeatureStateForThread());
 		final WebDriverWait wait = new WebDriverWait(
 			webDriver,
-			NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait()),
-			Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+			Duration.ofSeconds(NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait())),
+			Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 		try {
 			wait.until(ExpectedConditions.presenceOfElementLocated(by));
 		} catch (final TimeoutException ex) {
@@ -884,8 +885,8 @@ public class ValidationStepDefinitions {
 		final By by = getBy.getBy(selector, StringUtils.isNotBlank(alias), selectorValue, State.getFeatureStateForThread());
 		final WebDriverWait wait = new WebDriverWait(
 			webDriver,
-			NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait()),
-			Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+			Duration.ofSeconds(NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait())),
+			Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 		try {
 			wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
 			/*
@@ -923,8 +924,8 @@ public class ValidationStepDefinitions {
 				linkContent, StringUtils.isNotBlank(alias), State.getFeatureStateForThread());
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait()),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait())),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText(content)));
 		} catch (final TimeoutException ex) {
 			/*
@@ -959,8 +960,8 @@ public class ValidationStepDefinitions {
 				linkContent, StringUtils.isNotBlank(alias), State.getFeatureStateForThread());
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait()),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait())),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.linkText(content)));
 			/*
 				If we get here the wait succeeded, which means the step has failed
@@ -1001,8 +1002,8 @@ public class ValidationStepDefinitions {
 			final WebDriver webDriver = State.getThreadDesiredCapabilityMap().getWebDriverForThread();
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait()),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait())),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(
 				By.cssSelector("[" + attribute + "='" + attributeValue + "']")));
 		} catch (final TimeoutException ex) {
@@ -1043,8 +1044,8 @@ public class ValidationStepDefinitions {
 			final WebDriver webDriver = State.getThreadDesiredCapabilityMap().getWebDriverForThread();
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait()),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait())),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
 					By.cssSelector("[" + attribute + "='" + attributeValue + "']")));
 			/*
@@ -1086,8 +1087,8 @@ public class ValidationStepDefinitions {
 			final WebDriver webDriver = State.getThreadDesiredCapabilityMap().getWebDriverForThread();
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait()),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait())),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			wait.until(ExpectedConditions.presenceOfElementLocated(
 				By.cssSelector("[" + attribute + "='" + attributeValue + "']")));
 		} catch (final TimeoutException ex) {
@@ -1128,8 +1129,8 @@ public class ValidationStepDefinitions {
 			final WebDriver webDriver = State.getThreadDesiredCapabilityMap().getWebDriverForThread();
 			final WebDriverWait wait = new WebDriverWait(
 				webDriver,
-				NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait()),
-				Constants.ELEMENT_WAIT_SLEEP_TIMEOUT);
+				Duration.ofSeconds(NumberUtils.toLong(waitDuration, State.getFeatureStateForThread().getDefaultWait())),
+				Duration.ofMillis(Constants.ELEMENT_WAIT_SLEEP_TIMEOUT));
 			wait.until(
 				ExpectedConditions.presenceOfAllElementsLocatedBy(
 					By.cssSelector("[" + attribute + "='" + attributeValue + "']")));

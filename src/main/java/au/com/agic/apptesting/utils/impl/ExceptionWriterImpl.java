@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import javax.validation.constraints.NotNull;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -34,6 +35,7 @@ public class ExceptionWriterImpl implements ExceptionWriter {
 			FileUtils.writeStringToFile(
 				new File(location + "/" + EXCEPTION_FILE_NAME),
 				message + "\n" + stackTrace + "\n",
+				Charset.defaultCharset(),
 				true);
 
 			if (exception.getCause() != null) {
