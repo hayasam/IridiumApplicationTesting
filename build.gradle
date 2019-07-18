@@ -12,6 +12,9 @@ buildscript {
 		maven {
 			url 'https://oss.sonatype.org/content/repositories/releases'
 		}
+		maven {
+			url 'https://oss.sonatype.org/service/local/repositories/releases/content'
+		}
 		maven { url 'http://repo.spring.io/plugins-release' }
 		mavenCentral()
 		mavenLocal()
@@ -19,7 +22,7 @@ buildscript {
 
 	dependencies {
 		classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.2'
-		classpath 'com.matthewcasperson:build:0.+'
+		classpath 'com.matthewcasperson:build:0.0.5'
 	}
 }
 
