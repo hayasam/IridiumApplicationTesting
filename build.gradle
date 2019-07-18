@@ -21,13 +21,13 @@ buildscript {
 	}
 
 	dependencies {
-		classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.2'
+		classpath 'com.github.jengelman.gradle.plugins:shadow:5.1.0'
 		classpath 'com.matthewcasperson:build:0.0.5'
 	}
 }
 
 plugins {
-	id 'com.github.ben-manes.versions' version '0.20.0'
+	id 'com.github.ben-manes.versions' version '0.21.0'
 }
 
 apply plugin: 'java'
