@@ -125,7 +125,7 @@ sourceSets {
 	}
 }
 
-def mysqlDriverVersion = '8.0.16'
+def mysqlDriverVersion = '8.0.17'
 def guavaVersion = '28.0-jre'
 def seleniumVersion = '4.0.0-alpha-2'
 def htmlUnitDriverVersion = '2.35.1'
@@ -135,7 +135,7 @@ def logbackVersion = '1.2.3'
 def slf4jVersion = '1.7.25'
 def threadPoolVersion = '20030513.073905'
 def commonsIoVersion = '2.6'
-def commonsLangVersion = '3.9'
+def commonsLangVersion = '3.9.0.redhat-00001'
 def commonsExecVersion = '1.3'
 def operaDriverVersion = '1.5'
 def phantomJsDriverVersion = '1.4.4'        // https://github.com/detro/ghostdriver/issues/397
@@ -148,16 +148,10 @@ def compressCommonsVersion = '1.18.0.redhat-00001'
 def xmlApisVersion = '1.4.01'
 def sysoutOverSLF4JVersion = '1.0.2'
 def cucumberSpringVersion = '1.2.5'
-def springFrameworkVersion = '5.1.8.RELEASE'
+def springFrameworkVersion = '5.1.9.RELEASE'
 def aspectJVersion = '1.9.4'
 def springRetryVersion = '1.2.4.RELEASE'
 def cgLibVersion = '3.2.12'
-
-configurations.all {
-	resolutionStrategy {
-		//force 'com.google.guava:guava:' + guavaVersion
-	}
-}
 
 dependencies {
 	compile 'org.springframework:spring-core:' + springFrameworkVersion
@@ -223,7 +217,7 @@ dependencies {
 	compile group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.62'
 	compile group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.62'
 	compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
-	compile group: 'commons-codec', name: 'commons-codec', version: '1.12'
+	compile group: 'commons-codec', name: 'commons-codec', version: '1.13'
 	compile group: 'commons-collections', name: 'commons-collections', version: '3.2.2'
 	compile group: 'commons-configuration', name: 'commons-configuration', version: '1.10.0.redhat-1'
 	compile group: 'org.apache.commons', name: 'commons-csv', version: '1.7'
