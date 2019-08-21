@@ -18,6 +18,6 @@ jobs:
       env:
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
-	    DisableSigning: true
-		browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
+	DisableSigning: true
+	browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
         browserStackUsername: ${{ secrets.browserStackUsername }}
