@@ -16,5 +16,5 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 	  env:
-		ossrhPassword: ${{ secrets.ossrhPassword }}
+	    ossrhPassword: ${{ secrets.ossrhPassword }}
 	    ossrhUsername: ${{ secrets. ossrhUsername }}
