@@ -18,3 +18,4 @@ jobs:
       env:
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
+	    DisableSigning: true
