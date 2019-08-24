@@ -66,6 +66,7 @@ jobs:
         DisableSigning: true
     - name: Update Docs
       run: |
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
           git clone git@github.com:mcasperson/mcasperson.github.io.git
           cd mcasperson.github.io
           rm -rf IridiumApplicationTesting/javadoc
