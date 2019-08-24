@@ -57,7 +57,7 @@ jobs:
         -DisableSigning=false
         -Psigning.keyId=${{ secrets.gpgKeyId }}
         -Psigning.password=${{ secrets.gpgKeyPassword }}
-        -Psigning.secretKeyRingFile=secring.gpg
+        -Psigning.secretKeyRingFile=secring-iridium.gpg
         -PMavenVersion=0.0.0-SNAPSHOT
         uploadArchives
       env:
