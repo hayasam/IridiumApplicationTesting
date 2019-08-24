@@ -30,12 +30,17 @@ jobs:
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
         DisableSigning: true
-        browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
-        browserStackUsername: ${{ secrets.browserStackUsername }}
     - name: Run Phantom JS Tests
       run: ./gradlew test -DtestBrowsers=${TEST_SUITE}
       env:
         TEST_SUITE: "{'browsers':['PhantomJS'],'runNegTests':true,'runSimpleTests':true}"
+        ossrhPassword: ${{ secrets.ossrhPassword }}
+        ossrhUsername: ${{ secrets.ossrhUsername }}
+        DisableSigning: true
+    - name: Run iPhone tests
+      run: ./gradlew test -DtestBrowsers=${TEST_SUITE}
+      env:
+        TEST_SUITE: "{'browsers':['BrowserStack'],'runNegTests':false,'runSimpleTests':false,'groupName':'iPhone'}"
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
         DisableSigning: true
@@ -54,8 +59,6 @@ jobs:
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
         DisableSigning: true
-        browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
-        browserStackUsername: ${{ secrets.browserStackUsername }}
 	- name: Update Docs
 	  run: >
 		  gpg -q --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE" -o id_rsa id_rsa.gpg
