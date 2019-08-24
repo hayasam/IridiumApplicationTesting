@@ -34,7 +34,7 @@ jobs:
         browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
         browserStackUsername: ${{ secrets.browserStackUsername }}
     - name: Run Phantom JS Tests
-      run: ./gradlew build -x test
+      run: ./gradlew test
       env:
         TEST_SUITE: "{'browsers':['PhantomJS'],'runNegTests':true,'runSimpleTests':true}"
         ossrhPassword: ${{ secrets.ossrhPassword }}
