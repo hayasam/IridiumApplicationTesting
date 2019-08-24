@@ -26,8 +26,17 @@ jobs:
         wget https://iridium-cloud-support.s3.amazonaws.com/opera-stable_62.0.3331.116_amd64.deb
         sudo dpkg -i opera-*.deb
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew build -x test
       env:
+        ossrhPassword: ${{ secrets.ossrhPassword }}
+        ossrhUsername: ${{ secrets.ossrhUsername }}
+        DisableSigning: true
+        browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
+        browserStackUsername: ${{ secrets.browserStackUsername }}
+    - name: Run Phantom JS Tests
+      run: ./gradlew build -x test
+      env:
+        TEST_SUITE: "{'browsers':['PhantomJS'],'runNegTests':true,'runSimpleTests':true}"
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
         DisableSigning: true
