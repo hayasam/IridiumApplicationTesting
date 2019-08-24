@@ -35,9 +35,24 @@ jobs:
         browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
         browserStackUsername: ${{ secrets.browserStackUsername }}
     - name: Run Phantom JS Tests
-      run: ./gradlew test
+      run: ./gradlew tests -DtestBrowsers=${TEST_SUITE}
       env:
         TEST_SUITE: "{'browsers':['PhantomJS'],'runNegTests':true,'runSimpleTests':true}"
+        ossrhPassword: ${{ secrets.ossrhPassword }}
+        ossrhUsername: ${{ secrets.ossrhUsername }}
+        DisableSigning: true
+        browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
+        browserStackUsername: ${{ secrets.browserStackUsername }}
+  - name: Publish
+    run: |
+      ./gradlew
+      -DisableSigning=false
+      -Psigning.keyId=${{ secrets.gpgKeyId }}
+      -Psigning.password=${{ secrets.gpgKeyPassword }}
+      -Psigning.secretKeyRingFile=secring.gpg
+      -PMavenVersion=0.0.0-SNAPSHOT
+      uploadArchives
+    env:
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
         DisableSigning: true
