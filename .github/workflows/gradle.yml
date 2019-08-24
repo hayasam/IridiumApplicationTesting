@@ -59,16 +59,16 @@ jobs:
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
         DisableSigning: true
-	- name: Update Docs
-	  run: >
-		  gpg -q --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE" -o id_rsa id_rsa.gpg
-		  eval `ssh-agent -s`
-		  ssh-add id_rsa
-		  rm -f id_rsa
-		  git clone git@github.com:mcasperson/mcasperson.github.io.git
-		  cd mcasperson.github.io
-		  rm -rf IridiumApplicationTesting/javadoc
-		  cp -r ../build/docs/javadoc IridiumApplicationTesting
-		  git add .
-		  git commit -m "Updated docs"
-		  git push origin master
+    - name: Update Docs
+      run: >
+          gpg -q --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE" -o id_rsa id_rsa.gpg
+          eval `ssh-agent -s`
+          ssh-add id_rsa
+          rm -f id_rsa
+          git clone git@github.com:mcasperson/mcasperson.github.io.git
+          cd mcasperson.github.io
+          rm -rf IridiumApplicationTesting/javadoc
+          cp -r ../build/docs/javadoc IridiumApplicationTesting
+          git add .
+          git commit -m "Updated docs"
+          git push origin master
