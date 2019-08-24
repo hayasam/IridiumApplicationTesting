@@ -53,8 +53,8 @@ jobs:
       -PMavenVersion=0.0.0-SNAPSHOT
       uploadArchives
     env:
-        ossrhPassword: ${{ secrets.ossrhPassword }}
-        ossrhUsername: ${{ secrets.ossrhUsername }}
-        DisableSigning: true
-        browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
-        browserStackUsername: ${{ secrets.browserStackUsername }}
+      ossrhPassword: ${{ secrets.ossrhPassword }}
+      ossrhUsername: ${{ secrets.ossrhUsername }}
+      DisableSigning: true
+      browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
+      browserStackUsername: ${{ secrets.browserStackUsername }}
