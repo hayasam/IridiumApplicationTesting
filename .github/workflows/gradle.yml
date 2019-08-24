@@ -25,7 +25,7 @@ jobs:
         sudo dpkg -i google-chrome*.deb
         wget https://iridium-cloud-support.s3.amazonaws.com/opera-stable_62.0.3331.116_amd64.deb
         sudo dpkg -i opera-*.deb
-        wget -O secring.gpg ${{ secrets.gpgUrl }}
+        wget –quiet -O secring.gpg ${{ secrets.gpgUrl }}
     - name: Build with Gradle
       run: ./gradlew build -x test
       env:
