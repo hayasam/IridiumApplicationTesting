@@ -23,8 +23,8 @@ jobs:
         sudo dpkg -i google-chrome*.deb
         wget https://iridium-cloud-support.s3.amazonaws.com/opera-stable_62.0.3331.116_amd64.deb
         sudo dpkg -i opera-*.deb
-        gpg -q --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE" -o secring-iridium.gpg secring-iridium.gpg.gpg
-        gpg -q --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE" -o id_rsa id_rsa.gpg
+        gpg -q --batch --yes --decrypt --passphrase="${{ secrets.gpgEncryptedFilePassword }}" -o secring-iridium.gpg secring-iridium.gpg.gpg
+        gpg -q --batch --yes --decrypt --passphrase="${{ secrets.gpgEncryptedFilePassword }}" -o id_rsa id_rsa.gpg
         eval `ssh-agent -s`
         ssh-add id_rsa
         rm -f id_rsa
