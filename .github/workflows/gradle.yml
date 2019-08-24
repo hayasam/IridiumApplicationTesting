@@ -25,7 +25,7 @@ jobs:
         sudo dpkg -i opera-*.deb
         gpg -q --batch --yes --decrypt --passphrase="${{ secrets.gpgEncryptedFilePassword }}" -o secring-iridium.gpg secring-iridium.gpg.gpg
         gpg -q --batch --yes --decrypt --passphrase="${{ secrets.gpgEncryptedFilePassword }}" -o id_rsa id_rsa.gpg
-        chmod id_rsa 644
+        chmod 644 id_rsa
         eval `ssh-agent -s`
         ssh-add id_rsa
         rm -f id_rsa
