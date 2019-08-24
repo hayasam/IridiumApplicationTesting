@@ -15,14 +15,14 @@ jobs:
         java-version: 1.8
     - name: Setup VM
       run: |
-	export CHROME_BIN=/usr/bin/google-chrome
-	export DISPLAY=:99.0
-	sudo apt-get update
-	sudo apt-get install dbus-x11
-	sh -e /etc/init.d/xvfb start
+        export CHROME_BIN=/usr/bin/google-chrome
+        export DISPLAY=:99.0
+        sudo apt-get update
+        sudo apt-get install dbus-x11
+        sh -e /etc/init.d/xvfb start
         sudo apt-get install -y libappindicator1 fonts-liberation firefox
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	sudo dpkg -i google-chrome*.deb
+        sudo dpkg -i google-chrome*.deb
         wget https://iridium-cloud-support.s3.amazonaws.com/opera-stable_62.0.3331.116_amd64.deb
         sudo dpkg -i opera-*.deb
     - name: Build with Gradle
