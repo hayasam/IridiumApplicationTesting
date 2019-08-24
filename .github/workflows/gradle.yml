@@ -44,7 +44,7 @@ jobs:
         browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
         browserStackUsername: ${{ secrets.browserStackUsername }}
     - name: Publish
-      run: |
+      run: >
         ./gradlew
         -DisableSigning=false
         -Psigning.keyId=${{ secrets.gpgKeyId }}
