@@ -23,12 +23,13 @@ jobs:
         sudo dpkg -i google-chrome*.deb
         wget https://iridium-cloud-support.s3.amazonaws.com/opera-stable_62.0.3331.116_amd64.deb
         sudo dpkg -i opera-*.deb
+        mkdir ~/.ssh
+        ssh-keyscan -H github.com >> ~/.ssh/known_hosts
         gpg -q --batch --yes --decrypt --passphrase="${{ secrets.gpgEncryptedFilePassword }}" -o secring-iridium.gpg secring-iridium.gpg.gpg
-        gpg -q --batch --yes --decrypt --passphrase="${{ secrets.gpgEncryptedFilePassword }}" -o id_rsa id_rsa.gpg
-        chmod 600 id_rsa
+        gpg -q --batch --yes --decrypt --passphrase="${{ secrets.gpgEncryptedFilePassword }}" -o ~/.ssh/id_rsa id_rsa.gpg
+        chmod 600 ~/.ssh/id_rsa
         eval `ssh-agent -s`
-        ssh-add id_rsa
-        rm -f id_rsa
+        ssh-add ~/.ssh/id_rsa
     - name: Build with Gradle
       run: ./gradlew build -x test
       env:
@@ -37,8 +38,6 @@ jobs:
         DisableSigning: true
     - name: Update Docs
       run: |
-          mkdir ~/.ssh
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
           git clone git@github.com:mcasperson/mcasperson.github.io.git
           cd mcasperson.github.io
           rm -rf IridiumApplicationTesting/javadoc
