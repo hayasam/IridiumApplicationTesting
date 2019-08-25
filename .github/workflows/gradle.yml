@@ -30,6 +30,8 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         eval `ssh-agent -s`
         ssh-add ~/.ssh/id_rsa
+        git config --global user.email "matthewcasperson@gmail.com"
+        git config --global user.name "Matthew Casperson"
     - name: Build with Gradle
       run: ./gradlew build -x test
       env:
