@@ -1,4 +1,4 @@
-name: Chrome Tests
+name: Opera Tests
 on: [push]
 jobs:
   build:
