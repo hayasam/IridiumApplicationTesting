@@ -16,20 +16,9 @@ jobs:
         sudo apt-get update
         sudo apt-get install dbus-x11
         sudo /usr/bin/Xvfb :99 -screen 0 1024x768x24 &
-        sudo apt-get install -y libappindicator1 fonts-liberation firefox
+        sudo apt-get install -y libappindicator1 fonts-liberation
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
         sudo dpkg -i google-chrome*.deb
-        wget https://iridium-cloud-support.s3.amazonaws.com/opera-stable_62.0.3331.116_amd64.deb
-        sudo dpkg -i opera-*.deb
-        mkdir ~/.ssh
-        ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-        gpg -q --batch --yes --decrypt --passphrase="${{ secrets.gpgEncryptedFilePassword }}" -o secring-iridium.gpg secring-iridium.gpg.gpg
-        gpg -q --batch --yes --decrypt --passphrase="${{ secrets.gpgEncryptedFilePassword }}" -o ~/.ssh/id_rsa id_rsa.gpg
-        chmod 600 ~/.ssh/id_rsa
-        eval `ssh-agent -s`
-        ssh-add ~/.ssh/id_rsa
-        git config --global user.email "matthewcasperson@gmail.com"
-        git config --global user.name "Matthew Casperson"
     - name: Build with Gradle
       run: ./gradlew build -x test
       env:
