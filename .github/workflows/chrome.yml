@@ -31,5 +31,11 @@ jobs:
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
         DisableSigning: true
-        browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
-        browserStackUsername: ${{ secrets.browserStackUsername }}
+    - name: Run Chrome tests
+      run: ./gradlew test -DtestBrowsers=${TEST_SUITE}
+      env:
+        DISPLAY: ":99.0"
+        TEST_SUITE: "{'browsers':['Chrome'],'runNegTests':false,'runSimpleTests':false}"
+        ossrhPassword: ${{ secrets.ossrhPassword }}
+        ossrhUsername: ${{ secrets.ossrhUsername }}
+        DisableSigning: true

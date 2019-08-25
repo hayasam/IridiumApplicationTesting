@@ -28,8 +28,6 @@ jobs:
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
         DisableSigning: true
-        browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
-        browserStackUsername: ${{ secrets.browserStackUsername }}
     - name: Run Firefox Headless tests
       run: ./gradlew test -DtestBrowsers=${TEST_SUITE}
       env:
@@ -38,5 +36,3 @@ jobs:
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
         DisableSigning: true
-        browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
-        browserStackUsername: ${{ secrets.browserStackUsername }}
