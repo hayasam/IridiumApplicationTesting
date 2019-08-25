@@ -42,15 +42,6 @@ jobs:
         DisableSigning: true
         browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
         browserStackUsername: ${{ secrets.browserStackUsername }}
-    - name: Run Android tests
-      run: ./gradlew test -DtestBrowsers=${TEST_SUITE}
-      env:
-        TEST_SUITE: "{'browsers':['BrowserStack'],'runNegTests':false,'runSimpleTests':false,'groupName':'Android'}"
-        ossrhPassword: ${{ secrets.ossrhPassword }}
-        ossrhUsername: ${{ secrets.ossrhUsername }}
-        DisableSigning: true
-        browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
-        browserStackUsername: ${{ secrets.browserStackUsername }}
     - name: Run IE tests
       run: ./gradlew test -DtestBrowsers=${TEST_SUITE}
       env:
@@ -64,6 +55,15 @@ jobs:
       run: ./gradlew test -DtestBrowsers=${TEST_SUITE}
       env:
         TEST_SUITE: "{'browsers':['BrowserStack'],'runNegTests':false,'runSimpleTests':false,'groupName':'Edge'}"
+        ossrhPassword: ${{ secrets.ossrhPassword }}
+        ossrhUsername: ${{ secrets.ossrhUsername }}
+        DisableSigning: true
+        browserStackAccessToken: ${{ secrets.browserStackAccessToken }}
+        browserStackUsername: ${{ secrets.browserStackUsername }}
+    - name: Run Android tests
+      run: ./gradlew test -DtestBrowsers=${TEST_SUITE}
+      env:
+        TEST_SUITE: "{'browsers':['BrowserStack'],'runNegTests':false,'runSimpleTests':false,'groupName':'Android'}"
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
         DisableSigning: true
