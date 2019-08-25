@@ -35,6 +35,17 @@ jobs:
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
         DisableSigning: true
+    - name: Update Docs
+      run: |
+          mkdir ~/.ssh
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          git clone git@github.com:mcasperson/mcasperson.github.io.git
+          cd mcasperson.github.io
+          rm -rf IridiumApplicationTesting/javadoc
+          cp -r ../build/docs/javadoc IridiumApplicationTesting
+          git add .
+          git commit -m "Updated docs"
+          git push origin master
     - name: Run Phantom JS Tests
       run: ./gradlew test -DtestBrowsers=${TEST_SUITE}
       env:
@@ -64,13 +75,3 @@ jobs:
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
         DisableSigning: true
-    - name: Update Docs
-      run: |
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-          git clone git@github.com:mcasperson/mcasperson.github.io.git
-          cd mcasperson.github.io
-          rm -rf IridiumApplicationTesting/javadoc
-          cp -r ../build/docs/javadoc IridiumApplicationTesting
-          git add .
-          git commit -m "Updated docs"
-          git push origin master
