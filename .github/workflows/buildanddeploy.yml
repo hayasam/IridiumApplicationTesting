@@ -58,14 +58,17 @@ jobs:
           git commit -m "Updated docs"
           git push origin master
     - name: Publish
-      run: >
-        ./gradlew
-        -DisableSigning=false
-        -Psigning.keyId=${{ secrets.gpgKeyId }}
-        -Psigning.password=${{ secrets.gpgKeyPassword }}
-        -Psigning.secretKeyRingFile=secring-iridium.gpg
-        -PMavenVersion=$(cat /home/runner/work/IridiumApplicationTesting/IridiumApplicationTesting/version.txt)
-        uploadArchives
+      run: |
+        VERSION=$(cat /home/runner/work/IridiumApplicationTesting/IridiumApplicationTesting/version.txt)
+        if [[ $VERSION != *"+"* ]]; then
+          ./gradlew \
+          -DisableSigning=false \
+          -Psigning.keyId=${{ secrets.gpgKeyId }} \
+          -Psigning.password=${{ secrets.gpgKeyPassword }} \
+          -Psigning.secretKeyRingFile=secring-iridium.gpg \
+          -PMavenVersion=$(cat /home/runner/work/IridiumApplicationTesting/IridiumApplicationTesting/version.txt) \
+          uploadArchives
+        fi
       env:
         ossrhPassword: ${{ secrets.ossrhPassword }}
         ossrhUsername: ${{ secrets.ossrhUsername }}
