@@ -34,6 +34,7 @@ jobs:
         ssh-add ~/.ssh/id_rsa
         git config --global user.email "matthewcasperson@gmail.com"
         git config --global user.name "Matthew Casperson"
+	    cat /home/runner/work/IridiumApplicationTesting/IridiumApplicationTesting/version.txt
     - name: Build with Gradle
       run: ./gradlew build -x test
       env:
@@ -63,7 +64,7 @@ jobs:
         -Psigning.keyId=${{ secrets.gpgKeyId }}
         -Psigning.password=${{ secrets.gpgKeyPassword }}
         -Psigning.secretKeyRingFile=secring-iridium.gpg
-        -PMavenVersion=$(cat version.txt)
+        -PMavenVersion=$(cat /home/runner/work/IridiumApplicationTesting/IridiumApplicationTesting/version.txt)
         uploadArchives
       env:
         ossrhPassword: ${{ secrets.ossrhPassword }}
