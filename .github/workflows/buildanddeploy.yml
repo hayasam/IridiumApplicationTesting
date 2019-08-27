@@ -34,7 +34,7 @@ jobs:
         ssh-add ~/.ssh/id_rsa
         git config --global user.email "matthewcasperson@gmail.com"
         git config --global user.name "Matthew Casperson"
-	    cat /home/runner/work/IridiumApplicationTesting/IridiumApplicationTesting/version.txt
+        cat /home/runner/work/IridiumApplicationTesting/IridiumApplicationTesting/version.txt
     - name: Build with Gradle
       run: ./gradlew build -x test
       env:
