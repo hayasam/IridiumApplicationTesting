@@ -57,6 +57,8 @@ jobs:
           git add .
           git commit -m "Updated docs"
           git push origin master
+    - name: Update Code Coverage
+      run: bash <(curl -s https://codecov.io/bash)
     - name: Publish
       run: |
         VERSION=$(cat /home/runner/work/IridiumApplicationTesting/IridiumApplicationTesting/version.txt)
