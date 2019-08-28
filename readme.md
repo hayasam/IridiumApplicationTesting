@@ -31,13 +31,6 @@ Files from https://s3-ap-southeast-2.amazonaws.com/ag-iridium/won't be updated, 
 
 [![Chat](https://badges.gitter.im/Iridiumtester/repo.png)](https://gitter.im/Iridiumtester/Lobby)
 
-## Build Status
-[![Build Status](https://travis-ci.org/mcasperson/IridiumApplicationTesting.svg?branch=master)](https://travis-ci.org/mcasperson/IridiumApplicationTesting)
-
-[![Dependency Status](https://www.versioneye.com/user/projects/57c4c52f69d94900403f6466/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57c4c52f69d94900403f6466)
-
-[![codecov](https://codecov.io/gh/mcasperson/IridiumApplicationTesting/branch/master/graph/badge.svg)](https://codecov.io/gh/mcasperson/IridiumApplicationTesting)
-
 ## Documentation
 See the [documentation](https://github.com/mcasperson/IridiumApplicationTesting/wiki)
 for more details.
