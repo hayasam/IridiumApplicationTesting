@@ -14,7 +14,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install dbus-x11
         sudo /usr/bin/Xvfb :99 -screen 0 1024x768x24 &
-        wget https://iridium-cloud-support.s3.amazonaws.com/opera-stable_63.0.3368.88_amd64.deb
+        wget https://iridium-cloud-support.s3.amazonaws.com/opera-developer_65.0.3445.0_amd64.deb
         sudo dpkg -i opera-*.deb
     - name: Build with Gradle
       run: ./gradlew build -x test
