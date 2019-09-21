@@ -1,5 +1,5 @@
 PhantomJS (http://phantomjs.org/download.html) 2.1.1
-Chrome (https://sites.google.com/a/chromium.org/chromedriver/downloads) 77.0.3865.40
+Chrome (https://sites.google.com/a/chromium.org/chromedriver/downloads) 78.0.3904.11
 Opera (https://github.com/operasoftware/operachromiumdriver/releases) 2.45
 IE (http://selenium-release.storage.googleapis.com/index.html) 3.141.5
 GeckoDriver (https://github.com/mozilla/geckodriver/releases) 0.25.0
