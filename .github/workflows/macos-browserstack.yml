@@ -1,4 +1,4 @@
-name: Browserstack Tests
+name: MacOS Browserstack Tests
 on: [push]
 jobs:
   build:

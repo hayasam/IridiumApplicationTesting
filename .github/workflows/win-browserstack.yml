@@ -1,4 +1,4 @@
-name: Browserstack Tests
+name: Windows Browserstack Tests
 on: [push]
 jobs:
   build:

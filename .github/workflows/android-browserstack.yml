@@ -1,4 +1,4 @@
-name: Browserstack Tests
+name: Android Browserstack Tests
 on: [push]
 jobs:
   build:

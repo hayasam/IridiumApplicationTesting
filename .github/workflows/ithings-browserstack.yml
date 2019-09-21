@@ -1,4 +1,4 @@
-name: Browserstack Tests
+name: iThings Browserstack Tests
 on: [push]
 jobs:
   build:
