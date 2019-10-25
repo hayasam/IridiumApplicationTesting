@@ -21,7 +21,7 @@ jobs:
         unzip chromedriver_linux64.zip
         unzip operadriver_linux64.zip
         chmod +x chromedriver
-        chmod +x operadriver
+        chmod +x operadriver_linux64/operadriver
     - name: Build with Gradle
       run: ./gradlew build -x test
       env:
@@ -30,7 +30,7 @@ jobs:
         DisableSigning: true
     - name: Run Opera tests
       #run: ./gradlew test -Dopera.binary=/usr/bin/opera-developer -DtestBrowsers=${TEST_SUITE}
-      run: ./gradlew test -Dopera.binary=/usr/bin/opera -DuseSuppliedWebdrivers=false -Dwebdriver.opera.driver=./operadriver -DtestBrowsers=${TEST_SUITE}
+      run: ./gradlew test -Dopera.binary=/usr/bin/opera -DuseSuppliedWebdrivers=false -Dwebdriver.opera.driver=./operadriver_linux64/operadriver -DtestBrowsers=${TEST_SUITE}
       env:
         DISPLAY: ":99.0"
         TEST_SUITE: "{'browsers':['Opera'],'runNegTests':false,'runSimpleTests':false}"
