@@ -15,7 +15,10 @@ jobs:
         sudo apt-get install dbus-x11
         sudo /usr/bin/Xvfb :99 -screen 0 1024x768x24 &
         wget https://iridium-cloud-support.s3.amazonaws.com/Opera_63.0.3368.94_amd64.deb
+        wget https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_linux64.zip
         sudo dpkg -i Opera*.deb
+        unzip chromedriver_linux64.zip
+        chmod +x chromedriver
     - name: Build with Gradle
       run: ./gradlew build -x test
       env:
@@ -24,7 +27,7 @@ jobs:
         DisableSigning: true
     - name: Run Opera tests
       #run: ./gradlew test -Dopera.binary=/usr/bin/opera-developer -DtestBrowsers=${TEST_SUITE}
-      run: ./gradlew test -Dopera.binary=/usr/bin/opera -DtestBrowsers=${TEST_SUITE}
+      run: ./gradlew test -Dopera.binary=/usr/bin/opera -DtestBrowsers=${TEST_SUITE} -Dwebdriver.chrome.driver=./chromedriver
       env:
         DISPLAY: ":99.0"
         TEST_SUITE: "{'browsers':['Opera'],'runNegTests':false,'runSimpleTests':false}"
