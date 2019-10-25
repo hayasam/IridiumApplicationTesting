@@ -290,7 +290,8 @@ def passThroughProperties = [
 	"testRetryCount",
 	"dryRun",
 	"monochromeOutput",
-	"disableInterop"
+	"disableInterop",
+	"useSuppliedWebdrivers"
 ]
 
 test {
