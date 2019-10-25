@@ -30,7 +30,7 @@ jobs:
         DisableSigning: true
     - name: Run Opera tests
       #run: ./gradlew test -Dopera.binary=/usr/bin/opera-developer -DtestBrowsers=${TEST_SUITE}
-      run: ./gradlew test -Dopera.binary=/usr/bin/opera -DuseSuppliedWebdrivers=false -Dwebdriver.opera.driver=./operadriver_linux64/operadriver -DtestBrowsers=${TEST_SUITE}
+      run: ./gradlew test -Dopera.binary=/usr/bin/opera -DuseSuppliedWebdrivers=false -Dwebdriver.chrome.driver=./operadriver_linux64/operadriver -Dwebdriver.opera.driver=./operadriver_linux64/operadriver -DtestBrowsers=${TEST_SUITE}
       env:
         DISPLAY: ":99.0"
         TEST_SUITE: "{'browsers':['Opera'],'runNegTests':false,'runSimpleTests':false}"
