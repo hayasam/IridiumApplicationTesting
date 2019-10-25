@@ -23,7 +23,8 @@ jobs:
         ossrhUsername: ${{ secrets.ossrhUsername }}
         DisableSigning: true
     - name: Run Opera tests
-      run: ./gradlew test -Dopera.binary=/usr/bin/opera-developer -DtestBrowsers=${TEST_SUITE}
+      #run: ./gradlew test -Dopera.binary=/usr/bin/opera-developer -DtestBrowsers=${TEST_SUITE}
+      run: ./gradlew test -Dopera.binary=/usr/bin/opera -DtestBrowsers=${TEST_SUITE}
       env:
         DISPLAY: ":99.0"
         TEST_SUITE: "{'browsers':['Opera'],'runNegTests':false,'runSimpleTests':false}"
