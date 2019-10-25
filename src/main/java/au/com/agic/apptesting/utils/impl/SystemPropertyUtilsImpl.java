@@ -111,11 +111,11 @@ public class SystemPropertyUtilsImpl implements SystemPropertyUtils {
 	@Override
 	public void copyVariableToDefaultLocation(final String name) {
 
-		/*SYSTEM_PROPERTY_PREFIXES.stream()
+		SYSTEM_PROPERTY_PREFIXES.stream()
 			.map(e -> System.getProperty(e + name))
 			.filter(StringUtils::isNotBlank)
 			.findFirst()
-			.ifPresent(e -> System.setProperty(name, e));*/
+			.ifPresent(e -> System.setProperty(name, e));
 	}
 
 	@Override
