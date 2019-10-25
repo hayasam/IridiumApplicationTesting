@@ -15,12 +15,9 @@ jobs:
         sudo apt-get install dbus-x11
         sudo /usr/bin/Xvfb :99 -screen 0 1024x768x24 &
         wget https://iridium-cloud-support.s3.amazonaws.com/Opera_63.0.3368.94_amd64.deb
-        wget https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_linux64.zip
         wget https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_linux64.zip
         sudo dpkg -i Opera*.deb
-        unzip chromedriver_linux64.zip
         unzip operadriver_linux64.zip
-        chmod +x chromedriver
         chmod +x operadriver_linux64/operadriver
     - name: Build with Gradle
       run: ./gradlew build -x test
