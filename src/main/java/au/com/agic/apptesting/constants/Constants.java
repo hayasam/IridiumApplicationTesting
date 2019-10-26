@@ -312,6 +312,10 @@ public final class Constants {
 	 */
 	public static final String CHROME_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY = "webdriver.chrome.driver";
 	/**
+	 * The location of the firefox driver
+	 */
+	public static final String FIREFOX_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY = "webdriver.gecko.driver";
+	/**
 	 * The location of the chrome executable
 	 */
 	public static final String CHROME_EXECUTABLE_LOCATION_SYSTEM_PROPERTY = "webdriver.chrome.bin";

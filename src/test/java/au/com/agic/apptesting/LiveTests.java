@@ -85,17 +85,16 @@ public class LiveTests {
 
 	/**
 	 * Not all environments support all browsers, so we can define the browsers that are tested
-	 * via a system property.
+	 * via a system property. We also track any supplied values for external driver executable locations.
 	 */
 	@Before
-	public void getBrowserList() throws JSONException {
-		driverSettings.put("useSuppliedWebdrivers", System.getProperty("useSuppliedWebdrivers"));
-		driverSettings.put("webdriver.chrome.driver", System.getProperty("webdriver.chrome.driver"));
-		driverSettings.put("webdriver.opera.driver", System.getProperty("webdriver.opera.driver"));
-		driverSettings.put("webdriver.gecko.driver", System.getProperty("webdriver.gecko.driver"));
-		driverSettings.put("webdriver.edge.driver", System.getProperty("webdriver.edge.driver"));
-		driverSettings.put("phantomjs.binary.path", System.getProperty("phantomjs.binary.path"));
-
+	public void getBrowserList() {
+		driverSettings.put(Constants.USE_SUPPLIED_WEBDRIVERS, System.getProperty(Constants.USE_SUPPLIED_WEBDRIVERS));
+		driverSettings.put(Constants.CHROME_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY, System.getProperty(Constants.CHROME_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY));
+		driverSettings.put(Constants.OPERA_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY, System.getProperty(Constants.OPERA_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY));
+		driverSettings.put(Constants.FIREFOX_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY, System.getProperty(Constants.FIREFOX_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY));
+		driverSettings.put(Constants.EDGE_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY, System.getProperty(Constants.EDGE_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY));
+		driverSettings.put(Constants.PHANTOM_JS_BINARY_PATH_SYSTEM_PROPERTY, System.getProperty(Constants.PHANTOM_JS_BINARY_PATH_SYSTEM_PROPERTY));
 
 		final String browsersSysProp = SYSTEM_PROPERTY_UTILS.getPropertyEmptyAsNull(TEST_BROWSERS_SYSTEM_PROPERTY);
 		if (StringUtils.isBlank(browsersSysProp)) {
@@ -672,7 +671,9 @@ public class LiveTests {
 	}
 
 	private void setCommonProperties() {
-		driverSettings.keySet().forEach(s -> System.setProperty(s, driverSettings.get(s)));
+		driverSettings.keySet().forEach(s ->
+			System.setProperty(s, StringUtils.defaultIfBlank(driverSettings.get(s), ""))
+		);
 
 		System.setProperty(Constants.REPORTS_DIRECTORY, "");
 		System.setProperty(Constants.APP_URL_OVERRIDE_SYSTEM_PROPERTY, "");
