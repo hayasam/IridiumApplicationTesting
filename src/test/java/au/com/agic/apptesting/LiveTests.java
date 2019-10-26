@@ -6,6 +6,7 @@ import au.com.agic.apptesting.utils.impl.SystemPropertyUtilsImpl;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.bouncycastle.jcajce.provider.digest.MD2;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,9 +19,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -38,6 +37,10 @@ public class LiveTests {
 	private boolean runNegTests = true;
 	private boolean runSimpleTests = true;
 	private String additionalTags = "";
+	/**
+	 * Track driver settings supplied from gradle, and reset them with each test run
+	 */
+	private Map<String, String> driverSettings = new HashMap<>();
 
 	public boolean runNegTests() {
 		return runNegTests;
@@ -86,6 +89,14 @@ public class LiveTests {
 	 */
 	@Before
 	public void getBrowserList() throws JSONException {
+		driverSettings.put("useSuppliedWebdrivers", System.getProperty("useSuppliedWebdrivers"));
+		driverSettings.put("webdriver.chrome.driver", System.getProperty("webdriver.chrome.driver"));
+		driverSettings.put("webdriver.opera.driver", System.getProperty("webdriver.opera.driver"));
+		driverSettings.put("webdriver.gecko.driver", System.getProperty("webdriver.gecko.driver"));
+		driverSettings.put("webdriver.edge.driver", System.getProperty("webdriver.edge.driver"));
+		driverSettings.put("phantomjs.binary.path", System.getProperty("phantomjs.binary.path"));
+
+
 		final String browsersSysProp = SYSTEM_PROPERTY_UTILS.getPropertyEmptyAsNull(TEST_BROWSERS_SYSTEM_PROPERTY);
 		if (StringUtils.isBlank(browsersSysProp)) {
 			//browsers.add("IE");
@@ -661,6 +672,8 @@ public class LiveTests {
 	}
 
 	private void setCommonProperties() {
+		driverSettings.keySet().forEach(s -> System.setProperty(s, driverSettings.get(s)));
+
 		System.setProperty(Constants.REPORTS_DIRECTORY, "");
 		System.setProperty(Constants.APP_URL_OVERRIDE_SYSTEM_PROPERTY, "");
 		System.setProperty(Constants.FEATURE_GROUP_SYSTEM_PROPERTY, "");
