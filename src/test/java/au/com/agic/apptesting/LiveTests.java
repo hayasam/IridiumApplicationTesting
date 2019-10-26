@@ -661,12 +661,6 @@ public class LiveTests {
 	}
 
 	private void setCommonProperties() {
-		System.setProperty("webdriver.chrome.driver", "");
-		System.setProperty("webdriver.opera.driver", "");
-		System.setProperty("webdriver.ie.driver", "");
-		System.setProperty("webdriver.gecko.driver", "");
-		System.setProperty("webdriver.edge.driver", "");
-		System.setProperty("phantomjs.binary.path", "");
 		System.setProperty(Constants.REPORTS_DIRECTORY, "");
 		System.setProperty(Constants.APP_URL_OVERRIDE_SYSTEM_PROPERTY, "");
 		System.setProperty(Constants.FEATURE_GROUP_SYSTEM_PROPERTY, "");

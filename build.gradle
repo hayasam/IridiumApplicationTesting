@@ -297,14 +297,14 @@ def passThroughProperties = [
 test {
 	testLogging.showStandardStreams = true
 	for (p in passThroughProperties) {
-		Console.println "Setting " + p + " to " + System.properties[p]
-		systemProperty p, System.properties[p]
+		Console.println "Setting " + p + " to " + System.getProperty(p)
+		systemProperty p, System.getProperty(p)
 	}
 }
 
 run {
 	for (p in passThroughProperties) {
-		systemProperty p, System.properties[p]
+		systemProperty p, System.getProperty(p)
 	}
 }
 
