@@ -40,7 +40,7 @@ public class LiveTests {
 	/**
 	 * Track driver settings supplied from gradle, and reset them with each test run
 	 */
-	private Map<String, String> driverSettings = new HashMap<>();
+	private static Map<String, String> driverSettings = new HashMap<>();
 
 	public boolean runNegTests() {
 		return runNegTests;
@@ -84,7 +84,7 @@ public class LiveTests {
 	}
 
 	@BeforeClass
-	public void saveProperties() {
+	public static void saveProperties() {
 		Arrays.asList(Constants.USE_SUPPLIED_WEBDRIVERS,
 			Constants.CHROME_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY,
 			Constants.OPERA_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY,
