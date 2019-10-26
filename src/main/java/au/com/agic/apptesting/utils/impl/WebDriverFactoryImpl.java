@@ -136,8 +136,7 @@ public class WebDriverFactoryImpl implements WebDriverFactory {
 		}
 
 		if (Constants.OPERA.equalsIgnoreCase(browser)) {
-
-			Try.of(() -> new OperaOptions())
+			return Try.of(() -> new OperaOptions())
 				.peek(opts -> SYSTEM_PROPERTY_UTILS.getPropertyAsOptional(Constants.OPERA_BIN_LOCATION_SYSTEM_PROPERTY)
 					.ifPresent(val -> opts.setBinary(val)))
 				.peek(opts -> opts.merge(capabilities))

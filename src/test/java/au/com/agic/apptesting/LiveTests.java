@@ -89,12 +89,13 @@ public class LiveTests {
 	 */
 	@Before
 	public void getBrowserList() {
-		driverSettings.put(Constants.USE_SUPPLIED_WEBDRIVERS, System.getProperty(Constants.USE_SUPPLIED_WEBDRIVERS));
-		driverSettings.put(Constants.CHROME_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY, System.getProperty(Constants.CHROME_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY));
-		driverSettings.put(Constants.OPERA_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY, System.getProperty(Constants.OPERA_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY));
-		driverSettings.put(Constants.FIREFOX_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY, System.getProperty(Constants.FIREFOX_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY));
-		driverSettings.put(Constants.EDGE_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY, System.getProperty(Constants.EDGE_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY));
-		driverSettings.put(Constants.PHANTOM_JS_BINARY_PATH_SYSTEM_PROPERTY, System.getProperty(Constants.PHANTOM_JS_BINARY_PATH_SYSTEM_PROPERTY));
+		Arrays.asList(Constants.USE_SUPPLIED_WEBDRIVERS,
+			Constants.CHROME_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY,
+			Constants.OPERA_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY,
+			Constants.FIREFOX_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY,
+			Constants.EDGE_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY,
+			Constants.PHANTOM_JS_BINARY_PATH_SYSTEM_PROPERTY)
+			.forEach(s -> driverSettings.put(s, StringUtils.defaultIfBlank(System.getProperty(s), "")));
 
 		final String browsersSysProp = SYSTEM_PROPERTY_UTILS.getPropertyEmptyAsNull(TEST_BROWSERS_SYSTEM_PROPERTY);
 		if (StringUtils.isBlank(browsersSysProp)) {
