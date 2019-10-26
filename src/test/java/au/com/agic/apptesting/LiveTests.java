@@ -83,12 +83,8 @@ public class LiveTests {
 		});
 	}
 
-	/**
-	 * Not all environments support all browsers, so we can define the browsers that are tested
-	 * via a system property. We also track any supplied values for external driver executable locations.
-	 */
-	@Before
-	public void getBrowserList() {
+	@BeforeClass
+	public void saveProperties() {
 		Arrays.asList(Constants.USE_SUPPLIED_WEBDRIVERS,
 			Constants.CHROME_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY,
 			Constants.OPERA_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY,
@@ -96,6 +92,15 @@ public class LiveTests {
 			Constants.EDGE_WEB_DRIVER_LOCATION_SYSTEM_PROPERTY,
 			Constants.PHANTOM_JS_BINARY_PATH_SYSTEM_PROPERTY)
 			.forEach(s -> driverSettings.put(s, StringUtils.defaultIfBlank(System.getProperty(s), "")));
+	}
+
+	/**
+	 * Not all environments support all browsers, so we can define the browsers that are tested
+	 * via a system property. We also track any supplied values for external driver executable locations.
+	 */
+	@Before
+	public void getBrowserList() {
+
 
 		final String browsersSysProp = SYSTEM_PROPERTY_UTILS.getPropertyEmptyAsNull(TEST_BROWSERS_SYSTEM_PROPERTY);
 		if (StringUtils.isBlank(browsersSysProp)) {
