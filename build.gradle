@@ -27,7 +27,7 @@ buildscript {
 }
 
 plugins {
-	id 'com.github.ben-manes.versions' version '0.22.0'
+	id 'com.github.ben-manes.versions' version '0.27.0'
 }
 
 apply plugin: 'java'
@@ -125,10 +125,10 @@ sourceSets {
 	}
 }
 
-def mysqlDriverVersion = '8.0.17'
-def guavaVersion = '28.0-jre'
+def mysqlDriverVersion = '8.0.18'
+def guavaVersion = '28.1-jre'
 def seleniumVersion = '4.0.0-alpha-3'
-def htmlUnitDriverVersion = '2.35.1'
+def htmlUnitDriverVersion = '2.36.0'
 def validationVersion = '2.0.1.Final'
 def cucumberVersion = '1.2.5'
 def logbackVersion = '1.2.3'
@@ -144,14 +144,14 @@ def monteRepackVersion = '1.0.1'
 def vavrVersion = '0.9.2'
 def zapAPIVersion = '1.7.0'
 def browsermobVersion = '2.1.5'
-def compressCommonsVersion = '1.18.0.redhat-00001'
+def compressCommonsVersion = '1.19'
 def xmlApisVersion = '1.4.01'
 def sysoutOverSLF4JVersion = '1.0.2'
 def cucumberSpringVersion = '1.2.5'
 def springFrameworkVersion = '5.2.0.RELEASE'
 def aspectJVersion = '1.9.4'
 def springRetryVersion = '1.2.4.RELEASE'
-def cgLibVersion = '3.2.12'
+def cgLibVersion = '3.3.0'
 
 dependencies {
 	compile 'org.springframework:spring-core:' + springFrameworkVersion
@@ -196,13 +196,13 @@ dependencies {
 	compile group: 'xml-apis', name: 'xml-apis', version: xmlApisVersion
 	compile group: 'uk.org.lidalia', name: 'sysout-over-slf4j', version: sysoutOverSLF4JVersion
 	compile group: 'org.springframework.retry', name: 'spring-retry', version: springRetryVersion
-	compile group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.9'
+	compile group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.10'
 	compile group: 'org.json', name: 'json', version: '20190722'
 	compile group: 'cglib', name: 'cglib', version: cgLibVersion
 	compile group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.2.0'
 	// Fixes an issue in java 9 where these classes are no longer included
 	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
-	compile group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
+	compile group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
 
 	/*
         The following are dependencies required by ZAP
@@ -212,11 +212,11 @@ dependencies {
 	compile group: 'edu.stanford.ejalbert', name: 'BrowserLauncher2', version: '1.3'
 	compile group: 'org.owasp.jbrofuzz', name: 'jbrofuzz', version: '2.5.1'
 	compile group: 'org.owasp.jbrofuzz', name: 'jbrofuzz-encoder', version: '2.5.1'
-	compile group: 'org.apache.ant', name: 'ant', version: '1.10.6'
-	compile group: 'org.bouncycastle', name: 'bcmail-jdk15on', version: '1.62'
-	compile group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.62'
-	compile group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.62'
-	compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
+	compile group: 'org.apache.ant', name: 'ant', version: '1.10.7'
+	compile group: 'org.bouncycastle', name: 'bcmail-jdk15on', version: '1.64'
+	compile group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.64'
+	compile group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.64'
+	compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
 	compile group: 'commons-codec', name: 'commons-codec', version: '1.13'
 	compile group: 'commons-collections', name: 'commons-collections', version: '3.2.2'
 	compile group: 'commons-configuration', name: 'commons-configuration', version: '1.10.0.redhat-1'
@@ -229,8 +229,8 @@ dependencies {
 	compile group: 'net.sf.ezmorph', name: 'ezmorph', version: '1.0.6'
 	compile group: 'edu.umass.cs.benchlab', name: 'harlib', version: '1.1.2'
 	compile group: 'org.hsqldb', name: 'hsqldb', version: '2.5.0'
-	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.9'
-	compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.11'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.10'
+	compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.12'
 	compile group: 'com.github.zafarkhaja', name: 'java-semver', version: '0.9.0'
 	compile group: 'org.jdom', name: 'jdom', version: '1.1.3'
 	compile group: 'net.htmlparser.jericho', name: 'jericho-html', version: '3.4'
@@ -239,7 +239,7 @@ dependencies {
 	compile group: 'com.sun.woodstock.dependlibs', name: 'jh', version: '2.0'
 	compile group: 'net.sf.json-lib', name: 'json-lib', version: '2.4', classifier: 'jdk15'
 	compile group: 'com.yuvimasory', name: 'orange-extensions', version: '1.3.0'
-	compile group: 'com.fifesoft', name: 'rsyntaxtextarea', version: '3.0.3'
+	compile group: 'com.fifesoft', name: 'rsyntaxtextarea', version: '3.0.4'
 	compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.28.0'
 	compile group: 'org.swinglabs', name: 'swingx', version: '1.6.1'
 	compile group: 'com.io7m.xom', name: 'xom', version: '1.2.10'
