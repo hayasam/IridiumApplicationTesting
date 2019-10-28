@@ -6,6 +6,7 @@ Feature: Test of the steps provided by Iridium
 	  # Load the page from the appUrlOverride value
 		And I open the application
 	  # Load the page from the URL
+		And I block access to the URL regex "https://speeddials.opera.com/.*" with response "200"
 		And I open the page "https://mcasperson.github.io/iridium/examples/test.html"
 		Then I verify that there were no HTTP errors
 		And I set the default wait time between steps to "0.2" seconds
