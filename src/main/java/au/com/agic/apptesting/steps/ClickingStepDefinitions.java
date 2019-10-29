@@ -105,7 +105,7 @@ public class ClickingStepDefinitions {
 			final JavascriptExecutor js = (JavascriptExecutor) webDriver;
 
 			// IE needs a workaround to click in an element in an object. Other browsers don't allow this javascript though.
-			if (browserDetection.isIE(webDriver)) {
+			if (browserDetection.isIE(webDriver) || browserDetection.isEdge(webDriver)) {
 				final WebElement svgWebElement = browserInteropUtils.clickObjectElementByXPath(
 					objectElement,
 					js,
