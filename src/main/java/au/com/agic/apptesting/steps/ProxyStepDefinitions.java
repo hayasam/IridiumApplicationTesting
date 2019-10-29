@@ -117,9 +117,7 @@ public class ProxyStepDefinitions {
 		proxy
 			.flatMap(ProxyDetails::getInterface)
 			.map(BrowserMobProxy.class::cast)
-			.ifPresent(x -> {
-				x.blacklistRequests(url, response);
-			});
+			.ifPresent(x -> x.blacklistRequests(url, response));
 	}
 
 	/**
@@ -137,9 +135,7 @@ public class ProxyStepDefinitions {
 		proxy
 			.flatMap(ProxyDetails::getInterface)
 			.map(BrowserMobProxy.class::cast)
-			.ifPresent(x -> {
-				x.blacklistRequests(url, response, type);
-			});
+			.ifPresent(x -> x.blacklistRequests(url, response, type));
 	}
 
 	/**
