@@ -72,4 +72,10 @@ public interface BrowserDetection {
 	 * @return true if the webdriver is controlling an iPad
 	 */
 	boolean isIPhone(@NotNull WebDriver webDriver);
+
+	/**
+	 * @param webDriver The current web driver
+	 * @return true if the webdriver is controlling the IE browser
+	 */
+	boolean isIE(@NotNull final WebDriver webDriver);
 }

@@ -102,4 +102,10 @@ public interface BrowserInteropUtils {
 		@NotNull final WebDriver webDriver,
 		@NotNull final WebElement element,
 		@NotNull final String value);
+
+	WebElement clickObjectElementByXPath(
+		@NotNull final WebElement object,
+		@NotNull final JavascriptExecutor js,
+		@NotNull final String xpath,
+		boolean ignoreMissing);
 }

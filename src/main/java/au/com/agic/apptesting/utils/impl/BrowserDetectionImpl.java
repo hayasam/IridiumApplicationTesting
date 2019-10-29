@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -15,6 +16,9 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -31,6 +35,10 @@ public class BrowserDetectionImpl implements BrowserDetection {
 	private static final String SAFARI_BROWSER_NAME = "safari";
 	private static final String IPAD_BROWSER_NAME = "iPad";
 	private static final String IPHONE_BROWSER_NAME = "iPhone";
+	private static final String IE = "ie";
+	private static final String INTERNET_EXPLORER = "internet explorer";
+	private static final String IEXPLORE = "iexplore";
+	private static final List<String> IE_NAMES = Arrays.asList(IE, INTERNET_EXPLORER, IEXPLORE);
 
 	@Override
 	public boolean isEdge(@NotNull final WebDriver webDriver) {
@@ -43,6 +51,18 @@ public class BrowserDetectionImpl implements BrowserDetection {
 			.equalsIgnoreCase(EDGE_BROWSER_NAME);
 
 		return isEdgeBrowser || isRemoteEdgeBrowser;
+	}
+
+	@Override
+	public boolean isIE(@NotNull final WebDriver webDriver) {
+		checkNotNull(webDriver);
+
+		final boolean isIEBrowser = webDriver instanceof InternetExplorerDriver;
+		final boolean isRemoteIE = webDriver instanceof RemoteWebDriver
+			&& IE_NAMES.contains(((RemoteWebDriver) webDriver).getCapabilities()
+			.getBrowserName()
+			.toLowerCase());
+		return isIEBrowser || isRemoteIE;
 	}
 
 	@Override

@@ -375,5 +375,63 @@ public class BrowserInteropUtilsImpl implements BrowserInteropUtils {
 		}
 	}
 
+	@Override
+	public WebElement clickObjectElementByXPath(
+		@NotNull final WebElement object,
+		@NotNull final JavascriptExecutor js,
+		@NotNull final String xpath,
+		final boolean ignoreMissing) {
+
+			// https://stackoverflow.com/questions/17720431/javascript-dispatchevent-click-is-not-working-in-ie9-and-ie10
+			final String script = "function getElementByXpath(path, svgDocument) {\n"
+				+ "  return svgDocument.evaluate(path, svgDocument, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;\n"
+				+ "}\n"
+				+ "element = getElementByXpath(\"" + xpath.replaceAll("\"", "\\\"") + "\", arguments[0].contentDocument);\n"
+				+ "function triggerEvent(el,eventName){\n"
+				+ "    var event;\n"
+				+ "    if(document.createEvent){\n"
+				+ "        event = document.createEvent('HTMLEvents');\n"
+				+ "        event.initEvent(eventName,true,true);\n"
+				+ "    }else if(document.createEventObject){// IE < 9\n"
+				+ "        event = document.createEventObject();\n"
+				+ "        event.eventType = eventName;\n"
+				+ "    }\n"
+				+ "    event.eventName = eventName;\n"
+				+ "    if(el.dispatchEvent){\n"
+				+ "        el.dispatchEvent(event);\n"
+				+ "    }else if(el.fireEvent && htmlEvents['on'+eventName]){// IE < 9\n"
+				+ "        el.fireEvent('on'+event.eventType,event);// can trigger only real event (e.g. 'click')\n"
+				+ "    }else if(el[eventName]){\n"
+				+ "        el[eventName]();\n"
+				+ "    }else if(el['on'+eventName]){\n"
+				+ "        el['on'+eventName]();\n"
+				+ "    }\n"
+				+ "}\n"
+				+ "function addEvent(el,type,handler){\n"
+				+ "    if(el.addEventListener){\n"
+				+ "        el.addEventListener(type,handler,false);\n"
+				+ "    }else if(el.attachEvent && htmlEvents['on'+type]){// IE < 9\n"
+				+ "        el.attachEvent('on'+type,handler);\n"
+				+ "    }else{\n"
+				+ "        el['on'+type]=handler;\n"
+				+ "    }\n"
+				+ "}\n"
+				+ "function removeEvent(el,type,handler){\n"
+				+ "    if(el.removeventListener){\n"
+				+ "        el.removeEventListener(type,handler,false);\n"
+				+ "    }else if(el.detachEvent && htmlEvents['on'+type]){// IE < 9\n"
+				+ "        el.detachEvent('on'+type,handler);\n"
+				+ "    }else{\n"
+				+ "        el['on'+type]=null;\n"
+				+ "    }\n"
+				+ "}\n"
+				+ "if (!" + ignoreMissing + " && !element) throw \"Element was not found\";\n"
+				+ "if (element) {\n"
+				+ "		triggerEvent(element, 'click');\n"
+				+ "}\n"
+				+ "return element;";
+			return (WebElement) js.executeScript(script, object);
+	}
+
 }
 
