@@ -277,8 +277,11 @@ public class ValidationStepDefinitions {
 						new StringBuilder("The following URLs returned HTTP errors\n");
 
 					responses.stream().forEach(x -> {
-						message.append(x.getOriginalUrl());
-						message.append("\n");
+						message
+							.append(x.getOriginalRequest().getMethod())
+							.append(" ")
+							.append(x.getOriginalUrl())
+							.append("\n");
 					});
 
 					throw new HttpResponseException(message.toString());

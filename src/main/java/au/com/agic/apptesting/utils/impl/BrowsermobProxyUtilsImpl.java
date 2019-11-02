@@ -139,29 +139,23 @@ public class BrowsermobProxyUtilsImpl implements LocalProxyUtils<BrowserMobProxy
 		final BrowserMobProxy proxy,
 		final ProxyDetails<BrowserMobProxy> proxyDetails) {
 
-		proxy.addResponseFilter(new ResponseFilter() {
-			@Override
-			public void filterResponse(
-				final HttpResponse response,
-				final HttpMessageContents contents,
-				final HttpMessageInfo messageInfo) {
+		proxy.addResponseFilter((response, contents, messageInfo) -> {
 
-				/*
-					Track anything other than a 200 range response
-				 */
-				if (response.getStatus().code() >= START_HTTP_ERROR
-					&& response.getStatus().code() <= END_HTTP_ERROR) {
+			/*
+				Track anything other than a 200 range response
+			 */
+			if (response.getStatus().code() >= START_HTTP_ERROR
+				&& response.getStatus().code() <= END_HTTP_ERROR) {
 
-					synchronized (proxyDetails) {
-						final Map<String, Object> properties = proxyDetails.getProperties();
-						if (!properties.containsKey(INVALID_REQUESTS)) {
-							properties.put(
-								INVALID_REQUESTS,
-								new ArrayList<HttpMessageInfo>());
-						}
-						ArrayList.class.cast(properties.get(INVALID_REQUESTS)).add(messageInfo);
-						proxyDetails.setProperties(properties);
+				synchronized (proxyDetails) {
+					final Map<String, Object> properties = proxyDetails.getProperties();
+					if (!properties.containsKey(INVALID_REQUESTS)) {
+						properties.put(
+							INVALID_REQUESTS,
+							new ArrayList<HttpMessageInfo>());
 					}
+					ArrayList.class.cast(properties.get(INVALID_REQUESTS)).add(messageInfo);
+					proxyDetails.setProperties(properties);
 				}
 			}
 		});
